@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinFormsCircle"
+             xmlns:controls="clr-namespace:XamarinFormsCircle.Controls;assembly=XamarinFormsCircle"
+             xmlns:viewmodels="clr-namespace:XamarinFormsCircle.ViewModels;assembly=XamarinFormsCircle"
+             BindingContext="{x:Static viewmodels:ViewModelLocator.Main}"
+             x:Class="XamarinFormsCircle.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <Label Text="Welcome to Xamarin Forms!" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Button Text="All Change" Command="{Binding ChangeSegmentsCommand}"/>
+
+        <Label Text="Animation"></Label>
+        <controls:Circle WidthRequest="200" HeightRequest="200">
+            <controls:Circle.Segments>
+                <controls:Segment Color="Aquamarine" SweepAngle="360" x:Name="TheCircle" Radius="0.5"/>
+            </controls:Circle.Segments>
+        </controls:Circle>
+
+
+        <Label Text="Binding to ViewModel"></Label>
+        <controls:Circle WidthRequest="200" HeightRequest="200" Segments="{Binding Segments}"/>
+
+        <Label Text="Rings"></Label>
+        <Grid WidthRequest="200" HeightRequest="200">
+            <controls:Circle HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Segments="{Binding Segments}"/>
+            <controls:Circle HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <controls:Circle.Segments>
+                    <controls:Segment Color="White" SweepAngle="360" Radius="0.8"/>
+                </controls:Circle.Segments>
+            </controls:Circle>
+        </Grid>
+        <!--<controls:Circle.Segments>
+                <controls:Segment Color="Blue" SweepAngle="90"/>
+                <controls:Segment Color="BlueViolet" SweepAngle="45" Radius="0.5"/>
+                <controls:Segment Color="Firebrick" SweepAngle="90"/>
+            </controls:Circle.Segments>-->
+    </StackLayout>
+
+</ContentPage>
